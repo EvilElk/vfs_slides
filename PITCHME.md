@@ -2,12 +2,14 @@
 ### Abbreviation
 For "Virtual File System" or "Virtual Filesystem Switch"
 ---
+
 # VFS
 ### What is this ?
 It is the abstraction layer between FS drivers and unified system calls.
 VFS system calls open(2), stat(2), read(2), write(2), chmod(2) and so
 on are called from a process context
 ---
+
 # Process structure
 ### task_struct
 
@@ -20,6 +22,7 @@ struct task_struct {
 }
 ```
 ---
+
 # Process structure
 ### fs_struct
 ```
@@ -34,6 +37,7 @@ struct fs_struct {
 
 ```
 ---
+
 # Process structure
 ### files_struct
 ```
