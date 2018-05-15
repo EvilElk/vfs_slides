@@ -2,6 +2,9 @@
 ### Abbreviation
 For "Virtual File System" or "Virtual Filesystem Switch"
 ---
+# VFS
+![VFS inside kernel](https://upload.wikimedia.org/wikipedia/commons/3/30/IO_stack_of_the_Linux_kernel.svg)
+---
 
 # VFS
 ### What is this ?
