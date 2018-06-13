@@ -8,11 +8,48 @@ For "Virtual File System" or "Virtual Filesystem Switch"
 
 # VFS
 ### What is this ?
-It is the abstraction layer between FS drivers and unified system calls.
+It is the **abstraction layer** between FS drivers and unified system calls.
 VFS system calls open(2), stat(2), read(2), write(2), chmod(2) and so
 on are called from a process context
 ---
+# VFS
+### register filesystem
+Registers filesystem structures and operations in kernel registry ``
+```
+static int __init ext4_init_fs(void)
+{
+...
+        err = register_filesystem(&ext4_fs_type);
+        if (err)
+                goto out;
+...
+}
+```
+---
+# VFS
+### register filesystem
+ * Adds the file system passed to the list of file systems the kernel is aware of for mount and other syscalls
+```
+int register_filesystem(struct file_system_type * fs)
+{
+        int res = 0;
+        struct file_system_type ** p;
 
+        BUG_ON(strchr(fs->name, '.'));
+        if (fs->next)
+                return -EBUSY;
+        write_lock(&file_systems_lock);
+        p = find_filesystem(fs->name, strlen(fs->name));
+        if (*p)
+                res = -EBUSY;
+        else
+                *p = fs;
+        write_unlock(&file_systems_lock);
+        return res;
+}
+```
+
+---
 # Process structure
 ### task_struct
 
@@ -36,11 +73,13 @@ struct fs_struct {
         int umask;
         int in_exec;
         struct path root, pwd;
-} __randomize_layout;
+};
 
 ```
 ---
+#
 
+---
 # Process structure
 ### files_struct
 ```
