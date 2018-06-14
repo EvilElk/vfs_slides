@@ -6,15 +6,13 @@ For "Virtual File System" or "Virtual Filesystem Switch"
 ![VFS inside kernel](https://upload.wikimedia.org/wikipedia/commons/3/30/IO_stack_of_the_Linux_kernel.svg)
 ---
 
-# VFS
 ### What is this ?
 It is the **abstraction layer** between FS drivers and unified system calls.
 VFS system calls open(2), stat(2), read(2), write(2), chmod(2) and so
 on are called from a process context
 ---
-# VFS
 ### register filesystem
-Registers filesystem structures and operations in kernel registry ``
+Registers filesystem structures and operations in kernel registry 
 ```
 static int __init ext4_init_fs(void)
 {
@@ -26,7 +24,6 @@ static int __init ext4_init_fs(void)
 }
 ```
 ---
-# VFS
 ### register filesystem
  * Adds the file system passed to the list of file systems the kernel is aware of for mount and other syscalls
 ```
