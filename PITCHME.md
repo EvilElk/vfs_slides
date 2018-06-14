@@ -45,6 +45,14 @@ int register_filesystem(struct file_system_type * fs)
         return res;
 }
 ```
+---
+
+# #
+
+---
+
+[linux kernel source tree: Documentation/filesystems/vfs.txt]
+[http://www.win.tue.nl/~aeb/linux/vfs/trail-2.html]
 
 ---
 # Process structure
@@ -92,6 +100,3 @@ struct files_struct {
 ```
 ---
  
----
-[linux kernel source tree: Documentation/filesystems/vfs.txt]
-[http://www.win.tue.nl/~aeb/linux/vfs/trail-2.html]
